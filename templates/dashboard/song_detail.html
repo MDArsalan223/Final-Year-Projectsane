@@ -1,0 +1,64 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block head_title %}Song Detail{% endblock %}
+
+{% block template %}
+
+<main class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 font-Poppins">
+    <div class="container mx-auto mt-8">
+        <div class="bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-3xl font-bold mb-6">{{ song.songName }}</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Image Column -->
+                <div class="mt-2">
+                    <div class="w-full h-64 md:h-auto overflow-hidden rounded-lg" style="background-image: url('{{ song.songThumbnail.url }}'); background-size: cover; background-position: center;">
+                    </div>
+                </div>
+                <!-- Information Column -->
+                <div class="flex flex-col justify-between gap-2">
+                    
+                    
+                    <div class="img-wrap">
+                        <img src="/media/{{ song.songThumbnail }}" alt="{{ song.songName }}" />
+                        
+                    </div>
+                    <h5>
+                        {{ song.songName }}
+                        <br />
+                        <div class="subtitle">{{ song.artist_name }}</div>
+                    </h5>
+                    
+                    <p class="mb-4"><strong>Genre:</strong> {{ song.genre }}</p>
+
+
+                    
+                    
+                    <audio controls class="mb-4">
+                        <source src="{{ song.song.url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "../nav/footer.html" %}
+</main>
+
+<style>
+    .download-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+</style>
+
+{% endblock %}
